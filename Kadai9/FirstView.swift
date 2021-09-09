@@ -11,7 +11,6 @@ struct FirstView: View {
     @State var selectedPrefecture = "未選択"
     @State private var isModalActive = false
     var body: some View {
-        
         HStack(spacing: 30) {
             Text("都道府県")
             Text(selectedPrefecture)
@@ -24,8 +23,6 @@ struct FirstView: View {
                 SecondView()
             })
         }
-        
-        
     }
 }
 
