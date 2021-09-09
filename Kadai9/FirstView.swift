@@ -7,20 +7,25 @@
 
 import SwiftUI
 
+final class SelectedPrefecture: ObservableObject {
+    @Published var selectedPrefecture = "未選択"
+}
+
 struct FirstView: View {
-    @State var selectedPrefecture = "未選択"
+    @ObservedObject private var viewModel = SelectedPrefecture()
     @State private var isModalActive = false
+
     var body: some View {
         HStack(spacing: 30) {
             Text("都道府県")
-            Text(selectedPrefecture)
+            Text(viewModel.selectedPrefecture)
             Button(action: {
                 isModalActive.toggle()
             }, label: {
                 Text("入力")
             })
             .fullScreenCover(isPresented: $isModalActive, content: {
-                SecondView()
+                SecondView(isModalActive: isModalActive)
             })
         }
     }
